@@ -1,0 +1,352 @@
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel CalculateDensites
+#pragma kernel CalculatePressures
+#pragma kernel CalculateInternalForces
+#pragma kernel CalculateExternalForces
+#pragma kernel UpdateVelocitiesAndPositions
+#pragma kernel ResolveBoundsCollisions
+#pragma kernel UpdateSpatialIndices
+#pragma kernel UpdateParticleIndices
+#pragma kernel BitonicSort
+
+// Includes
+#include "KernelFunctions.hlsl"
+#include "SpatialHash.hlsl"
+
+#define numThreads 256
+
+// Buffers
+RWStructuredBuffer<float3> positions;
+RWStructuredBuffer<float3> velocities;
+RWStructuredBuffer<float3> resultantForces;
+RWStructuredBuffer<float> densities;
+RWStructuredBuffer<float> pressures;
+RWStructuredBuffer<float> kernelFactors; // indices corresponding to smoothing kernels 0 -> poly6, 1-> poly6 gradient, 
+                                         // 2->poly6 laplacian, 3-> spiky gradient, 4-> viscosity Laplacian
+// Spatial Hash buffers
+RWStructuredBuffer<uint2> spatialIndices; // x = hash, y = index (in the positions array) seen in Particle Simulation using CUDA Simon Green
+RWStructuredBuffer<uint> particleIndices; // at the hash value is the first position of the first index in spatial indices of that hash value
+
+// Simulation Settings
+const uint numParticles;
+const float3 gravity;
+const float smoothingRadius;
+const float timeStep;
+const float mass;
+const float referenceDensity;
+const float gasStiffness;
+const float viscosityCoefficient;
+const float tensionCoefficient;
+const float surfaceTensionThreshold;
+const float XSPHsmoothingConstant;
+const float buoyancy;
+const float3 minBounds;
+const float3 maxBounds;
+const float boundBounceDampening;
+const float particleRadius;
+const uint tableSize;
+const float sqrRadius;
+
+[numthreads(numThreads, 1, 1)]
+void UpdateSpatialIndices(uint id : SV_DispatchThreadID)
+{
+    if (id.x >= numParticles)
+        return;
+    uint cellHash = HashCell(GetCell(positions[id.x], smoothingRadius), tableSize);
+    spatialIndices[id.x] = uint2(cellHash, id.x);
+    
+    particleIndices[cellHash] = tableSize + 1; // Reset so that update cell indicies can work later
+}
+
+[numthreads(numThreads, 1, 1)]
+void UpdateParticleIndices(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= numParticles)
+        return;
+    uint index = id.x;
+
+    // Update cell indices based on spatial indices
+    uint hash = spatialIndices[index].x;
+    InterlockedMin(particleIndices[hash], index); // Ensures thread safety and minimum value is stored
+}
+
+
+[numthreads(numThreads, 1, 1)]
+void CalculateDensites(uint id: SV_DispatchThreadID)
+{
+    if (id.x >= numParticles)
+        return;
+    
+    float density = Poly6SmoothingKernel(smoothingRadius, 0) * kernelFactors[0]; // start with self
+    
+    // Neighbourhood search and update densities
+    uint3 cell = GetCell(positions[id.x], smoothingRadius);
+    // the 27 neighbouring cells the offsets ranging from -1, -1, -1 to +1, +1, +1
+    for (int i = -1; i < 2; i++)
+    {
+        for (int j = -1; j < 2; j++)
+        {
+            for (int k = -1; k < 2; k++)
+            {
+                uint hash = HashCell(cell + int3(i, j, k), tableSize);
+                uint startIndex = particleIndices[hash];
+                // Loop over all particles in the current cell
+                while (startIndex < numParticles)
+                {
+                    uint neighbourIndex = spatialIndices[startIndex].y;
+                    startIndex++;
+                    if (spatialIndices[startIndex - 1].x != hash)
+                        break;
+                    if (id.x == neighbourIndex)
+                        continue;
+                    float3 direction = positions[id.x] - positions[neighbourIndex];
+                    float sqrDistance = dot(direction, direction);
+                    // Check that within range
+                    if(sqrDistance > sqrRadius)
+                        continue;
+                    float distance = 0;
+                    if (sqrDistance > 0)
+                        distance = sqrt(sqrDistance);
+                    
+                    density += Poly6SmoothingKernel(smoothingRadius, distance) * kernelFactors[0];
+                }
+            }
+        }
+    }
+    densities[id.x] = density * mass;
+}
+
+[numthreads(numThreads, 1, 1)]
+void CalculatePressures(uint id : SV_DispatchThreadID)
+{
+    if (id.x >= numParticles)
+        return;
+    pressures[id.x] = gasStiffness * (pow(abs(densities[id.x] / referenceDensity), 7) - 1);
+}
+
+[numthreads(numThreads, 1, 1)]
+void CalculateInternalForces(uint id : SV_DispatchThreadID)
+{
+    if (id.x >= numParticles)
+        return;
+    
+    if (densities[id.x] == 0 || pressures[id.x] == 0)
+    {
+        resultantForces[id.x] = float3(0, 0, 0);
+        return;
+    }
+    
+    float3 pressureForce = float3(0, 0, 0);
+    float particlePressureDensity = pressures[id.x] / pow(abs(densities[id.x]), 2);
+    float3 viscosityForce = float3(0, 0, 0);
+    float3 normal = float3(0, 0, 0);
+    float colourFieldLaplacian = 0;
+    
+    // Neighbourhood search and update forces
+    uint3 cell = GetCell(positions[id.x], smoothingRadius);
+    // the 27 neighbouring cells the offsets ranging from -1, -1, -1 to +1, +1, +1
+    for (int i = -1; i < 2; i++)
+    {
+        for (int j = -1; j < 2; j++) 
+        {
+            for (int k = -1; k < 2; k++)
+            {
+                uint hash = HashCell(cell + int3(i, j, k), tableSize);
+                uint startIndex = particleIndices[hash];
+                
+                // Loop over all particles in the current cell
+                while (startIndex < numParticles)
+                {
+                    uint neighbourIndex = spatialIndices[startIndex].y;
+                    startIndex++;
+                    if (spatialIndices[startIndex - 1].x != hash)
+                        break;
+                    float neighbourDensity = densities[neighbourIndex];
+                    if (id.x == neighbourIndex || pressures[neighbourIndex] == 0)
+                        continue;
+                    
+                    // Check that within range
+                    float3 direction = positions[id.x] - positions[neighbourIndex];
+                    
+                    float sqrDistance = dot(direction, direction);
+                    if (sqrDistance > sqrRadius || sqrDistance == 0)
+                        continue;
+                 
+                    float distance = 0;
+                    
+                    if (sqrDistance > 0)
+                        distance = sqrt(sqrDistance);
+        
+                    // Pressure
+                    float neighbourPressureDensity = pressures[neighbourIndex] / pow(abs(neighbourDensity), 2);
+                    float3 pressureKernelGradient = float3(0, 0, 0);
+                    if (distance > 0)
+                        pressureKernelGradient = SpikySmoothingKernelGradient(smoothingRadius, direction) * kernelFactors[3];
+                    pressureForce += pressureKernelGradient * (neighbourPressureDensity + particlePressureDensity);
+        
+                    // Viscosity
+                    float viscosityKernelLaplacian = ViscositySmoothingKernelLaplacian(smoothingRadius, distance) * kernelFactors[4];
+                    viscosityForce += (1 / neighbourDensity) * (velocities[neighbourIndex] - velocities[id.x]) * viscosityKernelLaplacian;
+        
+                    //Surface Tension
+                    float3 tensionKernelGradient = float3(0, 0, 0);
+                    if (distance > 0)
+                        tensionKernelGradient = Poly6SmoothingKernelGradient(smoothingRadius, direction) * kernelFactors[1];
+                    float tensionKernelLaplacian = Poly6SmoothingKernelLaplacian(smoothingRadius, distance) * kernelFactors[2];
+                    normal += tensionKernelGradient / neighbourDensity;
+                    colourFieldLaplacian += tensionKernelLaplacian / neighbourDensity;
+                }
+
+            }
+
+        }
+
+    }
+    float normalSize = length(normal);
+    if (normalSize > surfaceTensionThreshold || normalSize == 0)
+        colourFieldLaplacian = 0; // make the final force just equal to zero
+    else
+        normalize(normal);
+    
+    resultantForces[id.x] = (pressureForce * -densities[id.x] * mass) + (normal * colourFieldLaplacian * mass * -tensionCoefficient)
+    + (viscosityForce * viscosityCoefficient * mass);
+}
+
+
+[numthreads(numThreads, 1, 1)]
+void CalculateExternalForces(uint id : SV_DispatchThreadID)
+{
+    if (id.x >= numParticles)
+        return;
+    float density = densities[id.x];
+    //Gravity
+    resultantForces[id.x] += gravity * density;
+    //Buoyancy
+    resultantForces[id.x] += buoyancy * (density - referenceDensity) * gravity;
+   
+}
+
+
+[numthreads(numThreads, 1, 1)]
+void UpdateVelocitiesAndPositions(uint id: SV_DispatchThreadID)
+{
+    if (id.x >= numParticles)
+        return;
+    float3 acceleration = float3(0, 0, 0);
+    acceleration = resultantForces[id.x] / densities[id.x];
+    velocities[id.x] += timeStep * acceleration;
+    
+    // XSPH correction
+    if (id.x >= numParticles)
+        return;
+
+    float3 XSPHvelocity = float3(0, 0, 0);
+    float3 particlePosition = positions[id.x];
+    float particleDensity = densities[id.x];
+
+    // Neighbourhood search and XSPH
+    uint3 cell = GetCell(particlePosition, smoothingRadius);
+    for (int i = -1; i < 2; i++)
+    {
+        for (int j = -1; j < 2; j++)
+        {
+            for (int k = -1; k < 2; k++)
+            {
+                uint hash = HashCell(cell + int3(i, j, k), tableSize);
+                uint startIndex = particleIndices[hash];
+                while (startIndex < numParticles)
+                {
+                    uint neighbourIndex = spatialIndices[startIndex].y;
+                    startIndex++;
+                    if (spatialIndices[startIndex - 1].x != hash)
+                        break;
+                    if (id.x == neighbourIndex)
+                        continue;
+                    
+                    float3 direction = particlePosition - positions[neighbourIndex];
+                    float sqrDistance = dot(direction, direction);
+                    
+                    // Check that within range and avoid division by zero
+                    if (sqrDistance > sqrRadius || sqrDistance == 0)
+                        continue;
+
+                    float distance = sqrt(sqrDistance);
+                    float kernel = Poly6SmoothingKernel(smoothingRadius, distance) * kernelFactors[0];
+                    float neighbourDensity = densities[neighbourIndex];
+
+                    XSPHvelocity += (velocities[neighbourIndex] - velocities[id.x]) * (kernel / (neighbourDensity + particleDensity));
+                }
+            }
+        }
+    }
+
+    velocities[id.x] += XSPHvelocity * XSPHsmoothingConstant;
+    
+    positions[id.x] += timeStep * velocities[id.x];
+}
+
+[numthreads(numThreads, 1, 1)]
+void ResolveBoundsCollisions(uint id : SV_DispatchThreadID)
+{
+    if (id.x >= numParticles)
+        return;
+
+    float3 pos = positions[id.x];
+    float3 vel = velocities[id.x];
+
+    // Calculate local position within bounds
+    float3 localPos = (pos - minBounds) / (maxBounds - minBounds);
+
+    // Calculate local particle radius size
+    float3 localParticleRadiusSize = particleRadius / (maxBounds - minBounds);
+
+    float3 newPos = pos;
+    float3 newVel = vel;
+
+    // Resolve collisions
+    if (localPos.x <= localParticleRadiusSize.x || localPos.x >= 1 - localParticleRadiusSize.x)
+    {
+        newPos.x = (localPos.x > 0.5) ? maxBounds.x - (particleRadius + 0.00001) : minBounds.x + (particleRadius + 0.00001);
+        newVel.x *= -boundBounceDampening;
+    }
+    if (localPos.y <= localParticleRadiusSize.y || localPos.y >= 1 - localParticleRadiusSize.y)
+    {
+        newPos.y = (localPos.y > 0.5) ? maxBounds.y - (particleRadius + 0.00001) : minBounds.y + (particleRadius + 0.00001);
+        newVel.y *= -boundBounceDampening;
+    }
+    if (localPos.z <= localParticleRadiusSize.z || localPos.z >= 1 - localParticleRadiusSize.z)
+    {
+        newPos.z = (localPos.z > 0.5) ? maxBounds.z - (particleRadius + 0.00001) : minBounds.z + (particleRadius + 0.00001);
+        newVel.z *= -boundBounceDampening;
+    }
+
+    positions[id.x] = newPos;
+    velocities[id.x] = newVel;
+}
+
+
+const uint groupWidth;
+const uint groupHeight;
+const uint stepIndex;
+
+[numthreads(numThreads, 1, 1)]
+void BitonicSort(uint id : SV_DispatchThreadID)
+{
+   
+    uint i = id.x & (groupWidth - 1);
+    uint indexL = i + (groupHeight + 1) * (id.x / groupWidth);
+    uint rightStepSize = stepIndex == 0 ? groupHeight - 2 * i : (groupHeight + 1) / 2;
+    uint indexR = indexL + rightStepSize;
+    
+    if (indexR >= numParticles)
+        return;
+    
+    uint2 left = spatialIndices[indexL];
+    uint2 right = spatialIndices[indexR];
+    
+    if (left.x > right.x)
+    {
+        spatialIndices[indexL] = right;
+        spatialIndices[indexR] = left;
+    }
+}

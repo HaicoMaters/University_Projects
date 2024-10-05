@@ -8,7 +8,10 @@ An implementation of Smoothed Particle Hydrodynamics in Unity3D created for my d
 Consists of a small game focused on game physics and a larger game focusing on game AI and pathfinding. Larger game AI includes implementations of AI by using MinMax with in particular a MaxN algorithm being used to allow for multiple agents to choose the best moves they can make based on the best actions a couple turns ahead.
 
 ## *Wildlife Spotting Android Application:*
+A Wildlife spotting app where users can upload animals found on a map for others nearby to be able to view and also find.
+
 A team software development project developed in Java using Maven and Android Studio with a small software engineering team to create android application, through software engineering phases from requirements analysis to the design and development.
+
 
 The parts of the application I am responsible for are shown in the way files are authored but some of my contributions can be summarized as:
 
@@ -17,3 +20,10 @@ The parts of the application I am responsible for are shown in the way files are
 •	Used the Wikipedia API to extract basic animal information in Json format for application to receive.
 
 •	Added a minor Facebook integration into the app to be able to share animals found with a photo.
+
+## *C Projects*
+
+Two projects written in C one involving inter-process communcation and one involving networking using a socket based solution for a udp data transfer.
+
+Each project was straightforward in terms of direction where all was required was to write functions to satisfy the requirements in the relvant header file while making certain that memory leaks are guarded against and the C library functions are saftely used and chosen.
+

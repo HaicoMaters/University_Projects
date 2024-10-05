@@ -27,3 +27,20 @@ Two projects written in C one involving inter-process communcation and one invol
 
 Each project was straightforward in terms of direction where all was required was to write functions to satisfy the requirements in the relvant header file while making certain that memory leaks are guarded against and the C library functions are saftely used and chosen.
 
+## *Lottery Web App*
+
+From some original code for a webpage, additional features mostly focused around security were added. (Both original provided code and final application available)
+
+The Following was added:
+
+•	Input Validation for registration
+•	Custom error pages (e.g. 404/403)
+•	Database Encryption/Hashing
+•	Login page
+•	Authentication for login (Correct credentials, reCAPTCHA, time-based pin, limited login attempts)
+•	Ability to log out
+•	Correct authorisation, users can only see what they allowed
+•	Role Based Access Control (Admin, User and Logged out)
+•	Logging of user activity (Registration and login. Log the Time, Username and IP. Also, log failed login attempts and invalid page access attempts)
+•	Cryptographically secure number generation for the lottery
+•	Security Headers

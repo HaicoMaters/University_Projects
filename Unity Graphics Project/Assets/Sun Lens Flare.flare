@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!121 &12100000
+Flare:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Sun Lens Flare
+  m_FlareTexture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
+  m_TextureLayout: 0
+  m_Elements:
+  - m_ImageIndex: 0
+    m_Position: 0.1
+    m_Size: 8
+    m_Color: {r: 1, g: 0.42660633, b: 0, a: 0}
+    m_UseLightColor: 1
+    m_Rotate: 1
+    m_Zoom: 0
+    m_Fade: 0
+  - m_ImageIndex: 1
+    m_Position: 0.3
+    m_Size: 6
+    m_Color: {r: 0.9306508, g: 0.990566, b: 0.21026169, a: 0}
+    m_UseLightColor: 1
+    m_Rotate: 1
+    m_Zoom: 0
+    m_Fade: 0
+  - m_ImageIndex: 2
+    m_Position: 0.5
+    m_Size: 4
+    m_Color: {r: 1, g: 0.47265744, b: 0.24056602, a: 0}
+    m_UseLightColor: 1
+    m_Rotate: 1
+    m_Zoom: 0
+    m_Fade: 0
+  - m_ImageIndex: 3
+    m_Position: 0.7
+    m_Size: 3
+    m_Color: {r: 0.9333227, g: 0.9716981, b: 0.40792987, a: 0}
+    m_UseLightColor: 1
+    m_Rotate: 1
+    m_Zoom: 0
+    m_Fade: 0
+  - m_ImageIndex: 4
+    m_Position: 0.9
+    m_Size: 2
+    m_Color: {r: 1, g: 0.495283, b: 0.495283, a: 0}
+    m_UseLightColor: 1
+    m_Rotate: 1
+    m_Zoom: 1
+    m_Fade: 0
+  m_UseFog: 0

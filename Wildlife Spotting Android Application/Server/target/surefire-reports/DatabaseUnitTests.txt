@@ -1,0 +1,100 @@
+-------------------------------------------------------------------------------
+Test set: DatabaseUnitTests
+-------------------------------------------------------------------------------
+Tests run: 22, Failures: 0, Errors: 22, Skipped: 0, Time elapsed: 12.445 s <<< FAILURE! - in DatabaseUnitTests
+getIndividualSighting(DatabaseUnitTests)  Time elapsed: 12.359 s  <<< ERROR!
+java.lang.ExceptionInInitializerError
+	at DatabaseUnitTests.setUpDB(DatabaseUnitTests.java:35)
+Caused by: org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+	at DatabaseUnitTests.setUpDB(DatabaseUnitTests.java:35)
+Caused by: org.hibernate.exception.JDBCConnectionException: Error calling Driver#connect
+	at DatabaseUnitTests.setUpDB(DatabaseUnitTests.java:35)
+Caused by: java.sql.SQLNonTransientConnectionException: Socket fail to connect to host:address=(host=cs-db.ncl.ac.uk)(port=3306)(type=primary). cs-db.ncl.ac.uk
+	at DatabaseUnitTests.setUpDB(DatabaseUnitTests.java:35)
+Caused by: java.net.UnknownHostException: cs-db.ncl.ac.uk
+	at DatabaseUnitTests.setUpDB(DatabaseUnitTests.java:35)
+
+getIndividualSighting(DatabaseUnitTests)  Time elapsed: 12.361 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class Database.CommonDB
+	at DatabaseUnitTests.cleanDB(DatabaseUnitTests.java:47)
+
+incrementUserStat(DatabaseUnitTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class Database.CommonDB
+	at DatabaseUnitTests.setUpDB(DatabaseUnitTests.java:35)
+
+incrementUserStat(DatabaseUnitTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class Database.CommonDB
+	at DatabaseUnitTests.cleanDB(DatabaseUnitTests.java:47)
+
+incrementSighting(DatabaseUnitTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class Database.CommonDB
+	at DatabaseUnitTests.setUpDB(DatabaseUnitTests.java:35)
+
+incrementSighting(DatabaseUnitTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class Database.CommonDB
+	at DatabaseUnitTests.cleanDB(DatabaseUnitTests.java:47)
+
+removeSighting(DatabaseUnitTests)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class Database.CommonDB
+	at DatabaseUnitTests.setUpDB(DatabaseUnitTests.java:35)
+
+removeSighting(DatabaseUnitTests)  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class Database.CommonDB
+	at DatabaseUnitTests.cleanDB(DatabaseUnitTests.java:47)
+
+updateUserStatNotAlreadyExists(DatabaseUnitTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class Database.CommonDB
+	at DatabaseUnitTests.setUpDB(DatabaseUnitTests.java:35)
+
+updateUserStatNotAlreadyExists(DatabaseUnitTests)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class Database.CommonDB
+	at DatabaseUnitTests.cleanDB(DatabaseUnitTests.java:47)
+
+getAllSighting(DatabaseUnitTests)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class Database.CommonDB
+	at DatabaseUnitTests.setUpDB(DatabaseUnitTests.java:35)
+
+getAllSighting(DatabaseUnitTests)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class Database.CommonDB
+	at DatabaseUnitTests.cleanDB(DatabaseUnitTests.java:47)
+
+getUser(DatabaseUnitTests)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class Database.CommonDB
+	at DatabaseUnitTests.setUpDB(DatabaseUnitTests.java:35)
+
+getUser(DatabaseUnitTests)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class Database.CommonDB
+	at DatabaseUnitTests.cleanDB(DatabaseUnitTests.java:47)
+
+getUserStats(DatabaseUnitTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class Database.CommonDB
+	at DatabaseUnitTests.setUpDB(DatabaseUnitTests.java:35)
+
+getUserStats(DatabaseUnitTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class Database.CommonDB
+	at DatabaseUnitTests.cleanDB(DatabaseUnitTests.java:47)
+
+getCorrectUser(DatabaseUnitTests)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class Database.CommonDB
+	at DatabaseUnitTests.setUpDB(DatabaseUnitTests.java:35)
+
+getCorrectUser(DatabaseUnitTests)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class Database.CommonDB
+	at DatabaseUnitTests.cleanDB(DatabaseUnitTests.java:47)
+
+updateUserStatAlreadyExists(DatabaseUnitTests)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class Database.CommonDB
+	at DatabaseUnitTests.setUpDB(DatabaseUnitTests.java:35)
+
+updateUserStatAlreadyExists(DatabaseUnitTests)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class Database.CommonDB
+	at DatabaseUnitTests.cleanDB(DatabaseUnitTests.java:47)
+
+successfulDbConnection(DatabaseUnitTests)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class Database.CommonDB
+	at DatabaseUnitTests.setUpDB(DatabaseUnitTests.java:35)
+
+successfulDbConnection(DatabaseUnitTests)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class Database.CommonDB
+	at DatabaseUnitTests.cleanDB(DatabaseUnitTests.java:47)
+

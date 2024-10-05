@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: ServerTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.079 s <<< FAILURE! - in ServerTest
+connection(ServerTest)  Time elapsed: 0.03 s  <<< ERROR!
+java.lang.RuntimeException: java.net.ConnectException: Connection refused: connect
+	at ServerTest.connection(ServerTest.java:27)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at ServerTest.connection(ServerTest.java:19)
+

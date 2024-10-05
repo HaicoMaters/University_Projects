@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".AccountActivity">
+
+    <TextView
+            android:text="Username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/username_title"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.498" app:layout_constraintVertical_bias="0.088"
+            android:textSize="35dp"/>
+    <Button
+            android:text="Delete Account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/delete_button"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.498" app:layout_constraintVertical_bias="0.942"/>
+    <TextView
+            android:text="Most spotted species:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/most_viewed_title"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.181" app:layout_constraintVertical_bias="0.226"
+            android:textSize="20sp"/>
+    <TextView
+            android:text="Species:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/most_species_name"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintVertical_bias="0.296" android:textSize="20sp"/>
+    <TextView
+            android:text="Times Spotted:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/most_species_times"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.605" app:layout_constraintVertical_bias="0.356"
+            android:textSize="20sp"/>
+    <ImageView
+            android:layout_width="91dp"
+            android:layout_height="85dp" app:srcCompat="@drawable/empty" android:id="@+id/most_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.121"
+            app:layout_constraintVertical_bias="0.314"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

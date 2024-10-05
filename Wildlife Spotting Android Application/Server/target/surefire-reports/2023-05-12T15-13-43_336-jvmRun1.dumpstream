@@ -1,0 +1,612 @@
+# Created at 2023-05-12T15:14:41.443
+TestSet has not finished before stream error has appeared >> initializing exit by non-null configuration: DEFAULT
+java.io.EOFException
+	at java.base/java.io.DataInputStream.readInt(DataInputStream.java:398)
+	at org.apache.maven.surefire.booter.MasterProcessCommand.decode(MasterProcessCommand.java:115)
+	at org.apache.maven.surefire.booter.CommandReader$CommandRunnable.run(CommandReader.java:391)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+
+
+# Created at 2023-05-12T15:14:57.871
+Unexpected IOException with stream: Running
+
+
+# Created at 2023-05-12T15:14:58.108
+Unexpected IOException with stream: May 12, 2023 3:14:58 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {5.4.6.Final}
+
+
+# Created at 2023-05-12T15:14:58.892
+Unexpected IOException with stream: May 12, 2023 3:14:58 PM org.hibernate.annotations.common.reflection.java.JavaReflectionManager <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+
+
+# Created at 2023-05-12T15:14:59.303
+Unexpected IOException with stream: May 12, 2023 3:14:59 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+WARN: HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+
+
+# Created at 2023-05-12T15:14:59.351
+Unexpected IOException with stream: May 12, 2023 3:14:59 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH10001005: using driver [org.mariadb.jdbc.Driver] at URL [jdbc:mariadb://cs-db.ncl.ac.uk:3306/csc2033_team41]
+
+
+# Created at 2023-05-12T15:14:59.402
+Unexpected IOException with stream: May 12, 2023 3:14:59 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH10001001: Connection properties: {password=****, user=csc2033_team41}
+
+
+# Created at 2023-05-12T15:14:59.458
+Unexpected IOException with stream: May 12, 2023 3:14:59 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH10001003: Autocommit mode: false
+
+
+# Created at 2023-05-12T15:14:59.530
+Unexpected IOException with stream: May 12, 2023 3:14:59 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections <init>
+INFO: HHH000115: Hibernate connection pool size: 20 (min=1)
+
+
+# Created at 2023-05-12T15:14:59.585
+Unexpected IOException with stream: SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+
+
+# Created at 2023-05-12T15:14:59.624
+Unexpected IOException with stream: SLF4J: Defaulting to no-operation (NOP) logger implementation
+
+
+# Created at 2023-05-12T15:14:59.667
+Unexpected IOException with stream: SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+
+
+# Created at 2023-05-12T15:15:07.093
+Unexpected IOException with stream: Running
+
+
+# Created at 2023-05-12T15:15:08.868
+Unexpected IOException with stream: Running
+
+
+# Created at 2023-05-12T15:15:10.969
+Unexpected IOException with stream: May 12, 2023 3:15:10 PM org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator initiateService
+WARN: HHH000342: Could not obtain connection to query metadata : Cannot invoke "org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PoolState.getConnection()" because "this.state" is null
+
+
+# Created at 2023-05-12T15:15:10.993
+Unexpected IOException with stream: May 12, 2023 3:15:10 PM org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MariaDBDialect
+
+
+# Created at 2023-05-12T15:15:11.026
+Unexpected IOException with stream: May 12, 2023 3:15:11 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper logExceptions
+WARN: SQL Error: 0, SQLState: 08000
+
+
+# Created at 2023-05-12T15:15:11.043
+Unexpected IOException with stream: May 12, 2023 3:15:11 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper logExceptions
+ERROR: Socket fail to connect to host:address=(host=cs-db.ncl.ac.uk)(port=3306)(type=primary). cs-db.ncl.ac.uk
+
+
+# Created at 2023-05-12T15:15:11.047
+Unexpected IOException with stream: Initial SessionFactory creation failed.org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+
+
+# Created at 2023-05-12T15:15:11.051
+Unexpected IOException with stream: Exception in thread "Thread-0" 
+
+# Created at 2023-05-12T15:15:11.053
+Unexpected IOException with stream: Exception in thread "Thread-2" 
+
+# Created at 2023-05-12T15:15:11.055
+Unexpected IOException with stream: Exception in thread "Thread-1" 
+
+# Created at 2023-05-12T15:15:11.058
+Unexpected IOException with stream: java.lang.NoClassDefFoundError: Could not initialize class Database.CommonDB
+
+# Created at 2023-05-12T15:15:11.062
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.064
+Unexpected IOException with stream: 	at Database.UserDB.addUser(UserDB.java:40)
+
+# Created at 2023-05-12T15:15:11.067
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.069
+Unexpected IOException with stream: 	at ClientHandler.userDBRequests(ClientHandler.java:57)
+
+# Created at 2023-05-12T15:15:11.072
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.075
+Unexpected IOException with stream: 	at ClientHandler.handleRequest(ClientHandler.java:23)
+
+# Created at 2023-05-12T15:15:11.078
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.081
+Unexpected IOException with stream: 	at ClientHandler.run(ClientHandler.java:140)
+
+# Created at 2023-05-12T15:15:11.084
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.087
+Unexpected IOException with stream: 	at java.base/java.lang.Thread.run(Thread.java:833)
+
+# Created at 2023-05-12T15:15:11.089
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.092
+Unexpected IOException with stream: java.lang.ExceptionInInitializerError
+
+# Created at 2023-05-12T15:15:11.095
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.098
+Unexpected IOException with stream: 	at Database.CommonDB.buildSessionFactory(CommonDB.java:22)
+
+# Created at 2023-05-12T15:15:11.100
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.103
+Unexpected IOException with stream: 	at Database.CommonDB.<clinit>(CommonDB.java:12)
+
+# Created at 2023-05-12T15:15:11.107
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.110
+Unexpected IOException with stream: 	at Database.UserDB.addUser(UserDB.java:40)
+
+# Created at 2023-05-12T15:15:11.112
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.113
+Unexpected IOException with stream: 	at ClientHandler.userDBRequests(ClientHandler.java:57)
+
+# Created at 2023-05-12T15:15:11.116
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.119
+Unexpected IOException with stream: 	at ClientHandler.handleRequest(ClientHandler.java:23)
+
+# Created at 2023-05-12T15:15:11.121
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.123
+Unexpected IOException with stream: 	at ClientHandler.run(ClientHandler.java:140)
+
+# Created at 2023-05-12T15:15:11.125
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.127
+Unexpected IOException with stream: 	at java.base/java.lang.Thread.run(Thread.java:833)
+
+# Created at 2023-05-12T15:15:11.130
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.132
+Unexpected IOException with stream: Caused by: org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+
+# Created at 2023-05-12T15:15:11.135
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.137
+Unexpected IOException with stream: 	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:275)
+
+# Created at 2023-05-12T15:15:11.140
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.142
+Unexpected IOException with stream: 	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:237)
+
+# Created at 2023-05-12T15:15:11.144
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.147
+Unexpected IOException with stream: 	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214)
+
+# Created at 2023-05-12T15:15:11.149
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.151
+Unexpected IOException with stream: 	at org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory.injectServices(DefaultIdentifierGeneratorFactory.java:152)
+
+# Created at 2023-05-12T15:15:11.153
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.155
+Unexpected IOException with stream: 	at org.hibernate.service.internal.AbstractServiceRegistryImpl.injectDependencies(AbstractServiceRegistryImpl.java:286)
+
+# Created at 2023-05-12T15:15:11.157
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.159
+Unexpected IOException with stream: 	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:243)
+
+# Created at 2023-05-12T15:15:11.161
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.163
+Unexpected IOException with stream: 	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214)
+
+# Created at 2023-05-12T15:15:11.164
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.166
+Unexpected IOException with stream: 	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:175)
+
+# Created at 2023-05-12T15:15:11.168
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.170
+Unexpected IOException with stream: 	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:118)
+
+# Created at 2023-05-12T15:15:11.172
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.174
+Unexpected IOException with stream: 	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.build(MetadataBuildingProcess.java:83)
+
+# Created at 2023-05-12T15:15:11.176
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.177
+Unexpected IOException with stream: 	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:473)
+
+# Created at 2023-05-12T15:15:11.179
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.181
+Unexpected IOException with stream: 	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:84)
+
+# Created at 2023-05-12T15:15:11.183
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.185
+Unexpected IOException with stream: 	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:689)
+
+# Created at 2023-05-12T15:15:11.187
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.190
+Unexpected IOException with stream: 	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:724)
+
+# Created at 2023-05-12T15:15:11.192
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.194
+Unexpected IOException with stream: 	at Database.CommonDB.buildSessionFactory(CommonDB.java:18)
+
+# Created at 2023-05-12T15:15:11.196
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.198
+Unexpected IOException with stream: 	... 6 more
+
+# Created at 2023-05-12T15:15:11.200
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.202
+Unexpected IOException with stream: Caused by: org.hibernate.exception.JDBCConnectionException: Error calling Driver#connect
+
+# Created at 2023-05-12T15:15:11.204
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.206
+Unexpected IOException with stream: 	at org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:48)
+
+# Created at 2023-05-12T15:15:11.208
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.210
+Unexpected IOException with stream: 	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:42)
+
+# Created at 2023-05-12T15:15:11.212
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.215
+Unexpected IOException with stream: 	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:113)
+
+# Created at 2023-05-12T15:15:11.216
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.218
+Unexpected IOException with stream: 	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator.convertSqlException(BasicConnectionCreator.java:118)
+
+# Created at 2023-05-12T15:15:11.220
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.221
+Unexpected IOException with stream: 	at org.hibernate.engine.jdbc.connections.internal.DriverConnectionCreator.makeConnection(DriverConnectionCreator.java:41)
+
+# Created at 2023-05-12T15:15:11.224
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.227
+Unexpected IOException with stream: 	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator.createConnection(BasicConnectionCreator.java:58)
+
+# Created at 2023-05-12T15:15:11.228
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.230
+Unexpected IOException with stream: 	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.addConnections(DriverManagerConnectionProviderImpl.java:321)
+
+# Created at 2023-05-12T15:15:11.232
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.234
+Unexpected IOException with stream: 	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:240)
+
+# Created at 2023-05-12T15:15:11.237
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.238
+Unexpected IOException with stream: 	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:218)
+
+# Created at 2023-05-12T15:15:11.240
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.242
+Unexpected IOException with stream: 	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections$Builder.build(DriverManagerConnectionProviderImpl.java:359)
+
+# Created at 2023-05-12T15:15:11.243
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.245
+Unexpected IOException with stream: 	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildPool(DriverManagerConnectionProviderImpl.java:98)
+
+# Created at 2023-05-12T15:15:11.248
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.249
+Unexpected IOException with stream: 	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.configure(DriverManagerConnectionProviderImpl.java:73)
+
+# Created at 2023-05-12T15:15:11.251
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.253
+Unexpected IOException with stream: 	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:107)
+
+# Created at 2023-05-12T15:15:11.254
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.256
+Unexpected IOException with stream: 	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:246)
+
+# Created at 2023-05-12T15:15:11.259
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.261
+Unexpected IOException with stream: 	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214)
+
+# Created at 2023-05-12T15:15:11.263
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.265
+Unexpected IOException with stream: 	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.buildJdbcConnectionAccess(JdbcEnvironmentInitiator.java:145)
+
+# Created at 2023-05-12T15:15:11.267
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.269
+Unexpected IOException with stream: 	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:66)
+
+# Created at 2023-05-12T15:15:11.271
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.273
+Unexpected IOException with stream: 	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35)
+
+# Created at 2023-05-12T15:15:11.274
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.276
+Unexpected IOException with stream: 	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:101)
+
+# Created at 2023-05-12T15:15:11.278
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.280
+Unexpected IOException with stream: 	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
+
+# Created at 2023-05-12T15:15:11.282
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.283
+Unexpected IOException with stream: 	... 20 more
+
+# Created at 2023-05-12T15:15:11.286
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.289
+Unexpected IOException with stream: Caused by: java.sql.SQLNonTransientConnectionException: Socket fail to connect to host:address=(host=cs-db.ncl.ac.uk)(port=3306)(type=primary). cs-db.ncl.ac.uk
+
+# Created at 2023-05-12T15:15:11.291
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.294
+Unexpected IOException with stream: 	at org.mariadb.jdbc.client.impl.ConnectionHelper.connectSocket(ConnectionHelper.java:137)
+
+# Created at 2023-05-12T15:15:11.296
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.298
+Unexpected IOException with stream: 	at org.mariadb.jdbc.client.impl.StandardClient.<init>(StandardClient.java:99)
+
+# Created at 2023-05-12T15:15:11.299
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.301
+Unexpected IOException with stream: 	at org.mariadb.jdbc.Driver.connect(Driver.java:70)
+
+# Created at 2023-05-12T15:15:11.303
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.305
+Unexpected IOException with stream: 	at org.mariadb.jdbc.Driver.connect(Driver.java:101)
+
+# Created at 2023-05-12T15:15:11.307
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.308
+Unexpected IOException with stream: 	at org.mariadb.jdbc.Driver.connect(Driver.java:27)
+
+# Created at 2023-05-12T15:15:11.311
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.312
+Unexpected IOException with stream: 	at org.hibernate.engine.jdbc.connections.internal.DriverConnectionCreator.makeConnection(DriverConnectionCreator.java:38)
+
+# Created at 2023-05-12T15:15:11.313
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.315
+Unexpected IOException with stream: 	... 35 more
+
+# Created at 2023-05-12T15:15:11.317
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.319
+Unexpected IOException with stream: Caused by: java.net.UnknownHostException: cs-db.ncl.ac.uk
+
+# Created at 2023-05-12T15:15:11.321
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.323
+Unexpected IOException with stream: 	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:567)
+
+# Created at 2023-05-12T15:15:11.325
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.327
+Unexpected IOException with stream: 	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+
+# Created at 2023-05-12T15:15:11.329
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.330
+Unexpected IOException with stream: 	at java.base/java.net.Socket.connect(Socket.java:633)
+
+# Created at 2023-05-12T15:15:11.332
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.334
+Unexpected IOException with stream: 	at org.mariadb.jdbc.client.impl.ConnectionHelper.connectSocket(ConnectionHelper.java:131)
+
+# Created at 2023-05-12T15:15:11.336
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.338
+Unexpected IOException with stream: 	... 40 more
+
+# Created at 2023-05-12T15:15:11.340
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.341
+Unexpected IOException with stream: java.lang.NoClassDefFoundError: Could not initialize class Database.CommonDB
+
+# Created at 2023-05-12T15:15:11.343
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.346
+Unexpected IOException with stream: 	at Database.UserDB.addUser(UserDB.java:40)
+
+# Created at 2023-05-12T15:15:11.347
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.350
+Unexpected IOException with stream: 	at ClientHandler.userDBRequests(ClientHandler.java:57)
+
+# Created at 2023-05-12T15:15:11.351
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.353
+Unexpected IOException with stream: 	at ClientHandler.handleRequest(ClientHandler.java:23)
+
+# Created at 2023-05-12T15:15:11.355
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.357
+Unexpected IOException with stream: 	at ClientHandler.run(ClientHandler.java:140)
+
+# Created at 2023-05-12T15:15:11.359
+Unexpected IOException with stream: 
+
+
+# Created at 2023-05-12T15:15:11.360
+Unexpected IOException with stream: 	at java.base/java.lang.Thread.run(Thread.java:833)
+
+# Created at 2023-05-12T15:15:11.362
+Unexpected IOException with stream: 
+
+
